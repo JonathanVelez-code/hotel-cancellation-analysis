@@ -1,0 +1,36 @@
+{
+  "train": "arrivals 2015-07-01 to 2016-12-31 (78,589 bookings)",
+  "test": "arrivals 2017-01-01 to 2017-08-31 (40,619 bookings)",
+  "test_cancel_rate": 0.3874,
+  "excluded_for_leakage": [
+    "reservation_status",
+    "reservation_status_date",
+    "assigned_room_type",
+    "booking_changes",
+    "required_car_parking_spaces",
+    "country"
+  ],
+  "models": {
+    "Logistic regression": {
+      "roc_auc": 0.821,
+      "pr_auc": 0.7919,
+      "precision_at_0.5": 0.8182,
+      "recall_at_0.5": 0.5189,
+      "brier_score": 0.1605
+    },
+    "XGBoost": {
+      "roc_auc": 0.8326,
+      "pr_auc": 0.7943,
+      "precision_at_0.5": 0.798,
+      "recall_at_0.5": 0.5399,
+      "brier_score": 0.1627
+    },
+    "Baseline (hotel x lead time rate)": {
+      "roc_auc": 0.6609,
+      "pr_auc": 0.4976,
+      "precision_at_0.5": 0.5483,
+      "recall_at_0.5": 0.1904,
+      "brier_score": 0.2229
+    }
+  }
+}

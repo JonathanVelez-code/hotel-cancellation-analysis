@@ -1,0 +1,64 @@
+model,pct_bookings_targeted,pct_cancellations_captured
+XGBoost,0,0.0
+XGBoost,5,12.9
+XGBoost,10,25.8
+XGBoost,15,35.4
+XGBoost,20,44.0
+XGBoost,25,52.2
+XGBoost,30,58.7
+XGBoost,35,64.4
+XGBoost,40,69.8
+XGBoost,45,74.5
+XGBoost,50,79.0
+XGBoost,55,83.0
+XGBoost,60,86.9
+XGBoost,65,90.0
+XGBoost,70,92.7
+XGBoost,75,94.8
+XGBoost,80,96.5
+XGBoost,85,97.8
+XGBoost,90,99.0
+XGBoost,95,99.7
+XGBoost,100,100.0
+Logistic regression,0,0.0
+Logistic regression,5,12.9
+Logistic regression,10,25.8
+Logistic regression,15,35.9
+Logistic regression,20,44.7
+Logistic regression,25,52.5
+Logistic regression,30,59.0
+Logistic regression,35,64.6
+Logistic regression,40,69.4
+Logistic regression,45,73.9
+Logistic regression,50,77.8
+Logistic regression,55,81.7
+Logistic regression,60,84.7
+Logistic regression,65,87.7
+Logistic regression,70,90.3
+Logistic regression,75,92.8
+Logistic regression,80,94.8
+Logistic regression,85,96.4
+Logistic regression,90,98.1
+Logistic regression,95,99.4
+Logistic regression,100,100.0
+Baseline,0,0.0
+Baseline,5,9.1
+Baseline,10,15.9
+Baseline,15,21.3
+Baseline,20,27.9
+Baseline,25,34.5
+Baseline,30,40.1
+Baseline,35,48.6
+Baseline,40,52.2
+Baseline,45,56.2
+Baseline,50,63.0
+Baseline,55,68.6
+Baseline,60,76.5
+Baseline,65,79.1
+Baseline,70,84.3
+Baseline,75,86.4
+Baseline,80,92.1
+Baseline,85,96.6
+Baseline,90,98.2
+Baseline,95,99.2
+Baseline,100,100.0

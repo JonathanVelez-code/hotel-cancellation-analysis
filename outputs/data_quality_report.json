@@ -1,0 +1,11 @@
+{
+  "raw_rows": 119390,
+  "identical_rows_kept": 31994,
+  "children_missing_filled": 4,
+  "country_missing_filled": 488,
+  "meal_undefined_to_SC": 1169,
+  "zero_guest_rows_dropped": 180,
+  "impossible_or_extreme_adr_dropped": 2,
+  "clean_rows": 119208,
+  "rows_removed": 182
+}

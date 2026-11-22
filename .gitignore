@@ -1,0 +1,11 @@
+.venv/
+__pycache__/
+.pytest_cache/
+*.pyc
+
+# Data is downloaded by the pipeline
+data/
+outputs/powerbi/fact_bookings.csv
+outputs/powerbi/dim_date.csv
+
+.env

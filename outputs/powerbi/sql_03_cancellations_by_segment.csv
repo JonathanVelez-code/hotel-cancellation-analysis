@@ -1,0 +1,13 @@
+dimension,value,bookings,cancel_rate_pct,revenue_lost
+deposit_type,Non Refund,14586,99.4,3598937.0
+deposit_type,No Deposit,104460,28.4,13102902.0
+deposit_type,Refundable,162,22.2,19998.0
+market_segment,Groups,19790,61.1,2800544.0
+market_segment,Online TA,56408,36.8,10227646.0
+market_segment,Offline TA/TO,24181,34.3,2486958.0
+market_segment,Aviation,235,22.1,16578.0
+market_segment,Corporate,5282,18.8,196383.0
+market_segment,Direct,12582,15.4,993410.0
+market_segment,Complementary,728,12.2,270.0
+repeat_guest,First-time guest,115454,37.8,16621539.0
+repeat_guest,Repeat guest,3754,14.7,100298.0

@@ -1,0 +1,61 @@
+{
+  "risk_targeting_xgboost": {
+    "top_10pct": {
+      "bookings": 4061,
+      "cancel_rate_pct": 100.0,
+      "share_of_all_cancellations_pct": 25.8,
+      "share_of_lost_revenue_pct": 16.0
+    },
+    "top_20pct": {
+      "bookings": 8123,
+      "cancel_rate_pct": 85.2,
+      "share_of_all_cancellations_pct": 44.0,
+      "share_of_lost_revenue_pct": 39.9
+    },
+    "top_30pct": {
+      "bookings": 12185,
+      "cancel_rate_pct": 75.8,
+      "share_of_all_cancellations_pct": 58.7,
+      "share_of_lost_revenue_pct": 57.6
+    }
+  },
+  "risk_targeting_baseline": {
+    "top_10pct": {
+      "bookings": 4061,
+      "cancel_rate_pct": 61.6,
+      "share_of_all_cancellations_pct": 15.9,
+      "share_of_lost_revenue_pct": 11.4
+    },
+    "top_20pct": {
+      "bookings": 8123,
+      "cancel_rate_pct": 54.0,
+      "share_of_all_cancellations_pct": 27.9,
+      "share_of_lost_revenue_pct": 22.5
+    },
+    "top_30pct": {
+      "bookings": 12185,
+      "cancel_rate_pct": 51.8,
+      "share_of_all_cancellations_pct": 40.1,
+      "share_of_lost_revenue_pct": 34.6
+    }
+  },
+  "overbooking_model_used": "Logistic regression",
+  "overbooking": {
+    "weeks": 71,
+    "weekly_cancellation_forecast_wape_pct_model": 12.7,
+    "weekly_cancellation_forecast_wape_pct_baseline": 16.1,
+    "safe_overbook_rooms_total": 12930,
+    "weeks_where_overbooking_would_have_been_too_much_pct": 2.8,
+    "revenue_recoverable_if_overbooked_rooms_are_resold": 3951452.0,
+    "note": "Recoverable revenue assumes each overbooked room is resold at that hotel's average stay revenue. It is an upper bound that depends on enough demand to fill the rooms."
+  },
+  "deposit_policy": {
+    "segment": "No-deposit bookings in the top 20% of predicted risk",
+    "bookings": 7294,
+    "cancel_rate_pct": 65.1,
+    "no_deposit_overall_cancel_rate_pct": 31.8,
+    "revenue_lost_in_segment": 2758641.0,
+    "median_lead_time_days": 111,
+    "most_common_segment": "Online TA"
+  }
+}

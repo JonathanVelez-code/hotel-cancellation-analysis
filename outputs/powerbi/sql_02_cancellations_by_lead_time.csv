@@ -1,0 +1,13 @@
+hotel,lead_time_bucket,bookings,cancel_rate_pct,revenue_lost,avg_daily_rate
+City Hotel,0-7 days,10703,12.2,351464.0,102.89
+City Hotel,8-30 days,12541,30.9,1482356.0,113.29
+City Hotel,31-90 days,20775,39.9,2880764.0,107.12
+City Hotel,91-180 days,18206,48.0,3247711.0,110.24
+City Hotel,181-365 days,14234,62.7,2624665.0,96.42
+City Hotel,365+ days,2703,71.1,292698.0,81.25
+Resort Hotel,0-7 days,8932,6.5,97961.0,75.58
+Resort Hotel,8-30 days,6404,21.9,563441.0,98.24
+Resort Hotel,31-90 days,8753,32.5,1440399.0,104.83
+Resort Hotel,91-180 days,8214,37.4,1882458.0,106.87
+Resort Hotel,181-365 days,7299,41.3,1794782.0,92.58
+Resort Hotel,365+ days,444,46.6,63138.0,64.15
