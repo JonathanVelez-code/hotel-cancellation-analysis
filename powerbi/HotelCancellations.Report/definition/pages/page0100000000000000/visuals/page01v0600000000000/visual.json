@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "page01v0600000000000",
+  "position": {
+    "x": 770,
+    "y": 82,
+    "z": 6000,
+    "height": 95,
+    "width": 240,
+    "tabOrder": 6000
+  },
+  "visual": {
+    "visualType": "card",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_bookings"
+                    }
+                  },
+                  "Property": "Pct Revenue Lost"
+                }
+              },
+              "queryRef": "fact_bookings.Pct Revenue Lost",
+              "nativeQueryRef": "Pct Revenue Lost"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

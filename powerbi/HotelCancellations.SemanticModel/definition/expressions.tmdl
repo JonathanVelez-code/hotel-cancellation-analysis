@@ -1,0 +1,5 @@
+expression DataFolder = "C:\Users\jonat\Documents\hotel-cancellation-analysis\outputs\powerbi" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+	lineageTag: f55bd5a0-1b70-4007-a478-73ec3a83dc54
+
+	annotation PBI_ResultType = Text
+

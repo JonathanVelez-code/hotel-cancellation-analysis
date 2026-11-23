@@ -1,0 +1,125 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "page04v0700000000000",
+  "position": {
+    "x": 20,
+    "y": 190,
+    "z": 7000,
+    "height": 400,
+    "width": 1240,
+    "tabOrder": 7000
+  },
+  "visual": {
+    "visualType": "lineChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "weekly_overbooking"
+                    }
+                  },
+                  "Property": "week"
+                }
+              },
+              "queryRef": "weekly_overbooking.week",
+              "nativeQueryRef": "week",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "weekly_overbooking"
+                    }
+                  },
+                  "Property": "Actual Cancellations"
+                }
+              },
+              "queryRef": "weekly_overbooking.Actual Cancellations",
+              "nativeQueryRef": "Actual Cancellations"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "weekly_overbooking"
+                    }
+                  },
+                  "Property": "Forecast Cancellations"
+                }
+              },
+              "queryRef": "weekly_overbooking.Forecast Cancellations",
+              "nativeQueryRef": "Forecast Cancellations"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "weekly_overbooking"
+                    }
+                  },
+                  "Property": "Safe Overbooking"
+                }
+              },
+              "queryRef": "weekly_overbooking.Safe Overbooking",
+              "nativeQueryRef": "Safe Overbooking"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "weekly_overbooking"
+                  }
+                },
+                "Property": "week"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Cancellations per arrival week: actual vs. forecast vs. safe overbooking level'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

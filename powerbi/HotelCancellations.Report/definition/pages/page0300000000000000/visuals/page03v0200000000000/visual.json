@@ -1,0 +1,115 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "page03v0200000000000",
+  "position": {
+    "x": 20,
+    "y": 82,
+    "z": 2000,
+    "height": 420,
+    "width": 620,
+    "tabOrder": 2000
+  },
+  "visual": {
+    "visualType": "lineChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "gains_curve"
+                    }
+                  },
+                  "Property": "pct_bookings_targeted"
+                }
+              },
+              "queryRef": "gains_curve.pct_bookings_targeted",
+              "nativeQueryRef": "pct_bookings_targeted",
+              "active": true
+            }
+          ]
+        },
+        "Series": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "gains_curve"
+                    }
+                  },
+                  "Property": "model"
+                }
+              },
+              "queryRef": "gains_curve.model",
+              "nativeQueryRef": "model"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "gains_curve"
+                    }
+                  },
+                  "Property": "Cancellations Captured (%)"
+                }
+              },
+              "queryRef": "gains_curve.Cancellations Captured (%)",
+              "nativeQueryRef": "Cancellations Captured (%)"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "gains_curve"
+                  }
+                },
+                "Property": "pct_bookings_targeted"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'% of cancellations captured when targeting the riskiest bookings first'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

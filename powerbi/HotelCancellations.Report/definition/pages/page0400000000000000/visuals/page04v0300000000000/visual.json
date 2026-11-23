@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "page04v0300000000000",
+  "position": {
+    "x": 20,
+    "y": 82,
+    "z": 3000,
+    "height": 95,
+    "width": 302.5,
+    "tabOrder": 3000
+  },
+  "visual": {
+    "visualType": "card",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "weekly_overbooking"
+                    }
+                  },
+                  "Property": "Actual Cancellations"
+                }
+              },
+              "queryRef": "weekly_overbooking.Actual Cancellations",
+              "nativeQueryRef": "Actual Cancellations"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

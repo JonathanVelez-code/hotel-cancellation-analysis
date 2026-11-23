@@ -1,0 +1,277 @@
+table fact_bookings
+	lineageTag: 0956a9a5-614a-4569-a85a-9fc92b277b8d
+
+	measure Bookings = COUNTROWS(fact_bookings)
+		formatString: #,0
+		lineageTag: f5a54964-baa0-412e-b2db-ea3e43dc50f0
+
+	measure Cancellations = SUM(fact_bookings[is_canceled])
+		formatString: #,0
+		lineageTag: 131f0bd9-8626-4fb8-aa01-ee293f331737
+
+	measure 'Cancel Rate' = DIVIDE([Cancellations], [Bookings])
+		formatString: 0.0%
+		lineageTag: 6835dade-5354-4b10-8e50-a9edf2bf2b0a
+
+	measure 'Realized Revenue' = CALCULATE(SUM(fact_bookings[room_revenue]), fact_bookings[is_canceled] = 0)
+		formatString: #,0
+		lineageTag: 8471a959-95db-4de3-9215-240af912e941
+
+	measure 'Revenue Lost' = CALCULATE(SUM(fact_bookings[room_revenue]), fact_bookings[is_canceled] = 1)
+		formatString: #,0
+		lineageTag: 734c7d51-b5c3-4792-bb97-b734a56355ae
+
+	measure 'Pct Revenue Lost' = DIVIDE([Revenue Lost], [Realized Revenue] + [Revenue Lost])
+		formatString: 0.0%
+		lineageTag: 1ea105bb-c413-401a-ba1f-9cb93c3276df
+
+	measure 'Avg Daily Rate' = CALCULATE(AVERAGE(fact_bookings[adr]), fact_bookings[is_canceled] = 0)
+		formatString: #,0.00
+		lineageTag: 5cb84c14-8067-402e-a7a6-530b72862105
+
+	measure 'Avg Predicted Risk' = AVERAGE(fact_bookings[cancel_risk])
+		formatString: 0.0%
+		lineageTag: d3b87ae2-d4a8-49d1-a5f7-4f6bbc4dbae1
+
+	measure 'Cancel Rate (100+ bookings)' = IF([Bookings] >= 100, [Cancel Rate])
+		formatString: 0.0%
+		lineageTag: d619a533-10d1-40fd-8b86-490674d2aa5e
+
+	measure 'Test Bookings' = CALCULATE([Bookings], fact_bookings[risk_band] <> "Not scored (training period)")
+		formatString: #,0
+		lineageTag: 386bd8b0-3740-4f7c-b403-0a7153ff69de
+
+	measure 'Test Cancel Rate' = CALCULATE([Cancel Rate], fact_bookings[risk_band] <> "Not scored (training period)")
+		formatString: 0.0%
+		lineageTag: 44dd6965-c746-4cfa-aa9b-f18a7a004c95
+
+	column booking_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 5b437f00-9e26-4089-b0fa-f78778c3d628
+		summarizeBy: sum
+		sourceColumn: booking_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column hotel
+		dataType: string
+		lineageTag: d0a66382-d7b1-4203-b40f-d65d34726f23
+		summarizeBy: none
+		sourceColumn: hotel
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_canceled
+		dataType: int64
+		formatString: 0
+		lineageTag: 68f3a07e-a4c2-4b8c-a72e-57ee410f14c0
+		summarizeBy: sum
+		sourceColumn: is_canceled
+
+		annotation SummarizationSetBy = Automatic
+
+	column lead_time
+		dataType: int64
+		formatString: 0
+		lineageTag: ebdfa3d1-dd2a-4bba-b6ef-2f1e2d8d6996
+		summarizeBy: sum
+		sourceColumn: lead_time
+
+		annotation SummarizationSetBy = Automatic
+
+	column lead_time_bucket
+		dataType: string
+		lineageTag: 4ce7b52d-8b98-42fa-9f2e-f75489c68f08
+		summarizeBy: none
+		sourceColumn: lead_time_bucket
+		sortByColumn: lead_bucket_order
+
+		annotation SummarizationSetBy = Automatic
+
+	column booking_date
+		dataType: dateTime
+		formatString: yyyy-mm-dd
+		lineageTag: a1f7e2f1-6488-4bf8-b651-cc384fc3c024
+		summarizeBy: none
+		sourceColumn: booking_date
+
+		variation Variation
+			isDefault
+			relationship: 5b58d7fd-0e2a-4ddb-a0b9-8d95bcb0f8c3
+			defaultHierarchy: LocalDateTable_4c2ff2a5-5cc5-4bf7-8eac-ec62821ba32b.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column arrival_date
+		dataType: dateTime
+		formatString: yyyy-mm-dd
+		lineageTag: 4b802cd6-e684-4514-8794-0fadfdee6e38
+		summarizeBy: none
+		sourceColumn: arrival_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column arrival_month
+		dataType: int64
+		formatString: 0
+		lineageTag: a2d2883e-31b8-479a-b6c1-a0698ddd5328
+		summarizeBy: sum
+		sourceColumn: arrival_month
+
+		annotation SummarizationSetBy = Automatic
+
+	column total_nights
+		dataType: int64
+		formatString: 0
+		lineageTag: b6969983-899e-439c-9e1a-21e3b0fb9bcc
+		summarizeBy: sum
+		sourceColumn: total_nights
+
+		annotation SummarizationSetBy = Automatic
+
+	column guests
+		dataType: int64
+		formatString: 0
+		lineageTag: 79c8eed6-dfdf-4e40-87fb-d8e5a50a9cde
+		summarizeBy: sum
+		sourceColumn: guests
+
+		annotation SummarizationSetBy = Automatic
+
+	column adr
+		dataType: double
+		formatString: #,0.00
+		lineageTag: b1cfb60e-b540-4063-a804-b9f77c16badd
+		summarizeBy: sum
+		sourceColumn: adr
+
+		annotation SummarizationSetBy = Automatic
+
+	column room_revenue
+		dataType: double
+		lineageTag: efa7870f-1c91-4263-8f15-917d5d18dc85
+		summarizeBy: sum
+		sourceColumn: room_revenue
+
+		annotation SummarizationSetBy = Automatic
+
+	column meal
+		dataType: string
+		lineageTag: 7c8da642-7cb0-49bb-a05e-a4f7c36269e8
+		summarizeBy: none
+		sourceColumn: meal
+
+		annotation SummarizationSetBy = Automatic
+
+	column country
+		dataType: string
+		lineageTag: cecd7d70-595c-426d-b89f-c1a5e70dc3a6
+		summarizeBy: none
+		sourceColumn: country
+
+		annotation SummarizationSetBy = Automatic
+
+	column market_segment
+		dataType: string
+		lineageTag: 3e832b21-328f-437f-a4f0-45037cffac9f
+		summarizeBy: none
+		sourceColumn: market_segment
+
+		annotation SummarizationSetBy = Automatic
+
+	column distribution_channel
+		dataType: string
+		lineageTag: f0d498cf-8487-4299-83a4-8cc59e1979b8
+		summarizeBy: none
+		sourceColumn: distribution_channel
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_repeated_guest
+		dataType: int64
+		formatString: 0
+		lineageTag: c244417c-d29c-4e3e-83c4-5f51cd314676
+		summarizeBy: sum
+		sourceColumn: is_repeated_guest
+
+		annotation SummarizationSetBy = Automatic
+
+	column deposit_type
+		dataType: string
+		lineageTag: 2241b35f-abd3-42dc-b8b8-b5a6e47d253e
+		summarizeBy: none
+		sourceColumn: deposit_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column customer_type
+		dataType: string
+		lineageTag: d0130758-bd33-4995-b37b-5eb0ac5d71c6
+		summarizeBy: none
+		sourceColumn: customer_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column reserved_room_type
+		dataType: string
+		lineageTag: d722c3e2-1a3b-4814-9208-6373dfb3112c
+		summarizeBy: none
+		sourceColumn: reserved_room_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column cancel_risk
+		dataType: double
+		formatString: 0.0%
+		lineageTag: c6906f80-4f0f-4e1b-bf0f-3f73911c0218
+		summarizeBy: sum
+		sourceColumn: cancel_risk
+
+		annotation SummarizationSetBy = Automatic
+
+	column risk_band
+		dataType: string
+		lineageTag: d7deadfc-e7bd-4d50-8c6d-0b7e5c605eaa
+		summarizeBy: none
+		sourceColumn: risk_band
+		sortByColumn: risk_band_order
+
+		annotation SummarizationSetBy = Automatic
+
+	column lead_bucket_order
+		dataType: int64
+		formatString: 0
+		lineageTag: 8fa73154-e773-4f11-ba81-23be04a693c6
+		summarizeBy: sum
+		sourceColumn: lead_bucket_order
+
+		annotation SummarizationSetBy = Automatic
+
+	column risk_band_order
+		dataType: int64
+		formatString: 0
+		lineageTag: 412019e1-1901-4ee1-8c55-dfd3266950ab
+		summarizeBy: sum
+		sourceColumn: risk_band_order
+
+		annotation SummarizationSetBy = Automatic
+
+	partition fact_bookings = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "\fact_bookings.csv"),[Delimiter=",", Columns=22, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"booking_id", Int64.Type}, {"hotel", type text}, {"is_canceled", Int64.Type}, {"lead_time", Int64.Type}, {"lead_time_bucket", type text}, {"booking_date", type date}, {"arrival_date", type date}, {"arrival_month", Int64.Type}, {"total_nights", Int64.Type}, {"guests", Int64.Type}, {"adr", type number}, {"room_revenue", type number}, {"meal", type text}, {"country", type text}, {"market_segment", type text}, {"distribution_channel", type text}, {"is_repeated_guest", Int64.Type}, {"deposit_type", type text}, {"customer_type", type text}, {"reserved_room_type", type text}, {"cancel_risk", type number}, {"risk_band", type text}}, "en-US"),
+				    #"Added Order" = Table.AddColumn(#"Changed Type", "lead_bucket_order", each if [lead_time] <= 7 then 1 else if [lead_time] <= 30 then 2 else if [lead_time] <= 90 then 3 else if [lead_time] <= 180 then 4 else if [lead_time] <= 365 then 5 else 6, Int64.Type),
+				    #"Added Risk Order" = Table.AddColumn(#"Added Order", "risk_band_order", each if [risk_band] = "Low" then 1 else if [risk_band] = "Medium" then 2 else if [risk_band] = "High" then 3 else 4, Int64.Type)
+				in
+				    #"Added Risk Order"
+
+	annotation PBI_ResultType = Table
+

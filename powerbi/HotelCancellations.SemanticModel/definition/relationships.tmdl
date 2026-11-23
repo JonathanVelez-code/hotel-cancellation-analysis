@@ -1,0 +1,14 @@
+relationship 9ad373ac-9caf-43df-85c5-4c64bd21f6b9
+	fromColumn: fact_bookings.arrival_date
+	toColumn: dim_date.date
+
+relationship 5b58d7fd-0e2a-4ddb-a0b9-8d95bcb0f8c3
+	joinOnDateBehavior: datePartOnly
+	fromColumn: fact_bookings.booking_date
+	toColumn: LocalDateTable_4c2ff2a5-5cc5-4bf7-8eac-ec62821ba32b.Date
+
+relationship 4f4dff89-94fd-4f11-a608-b3c4778fc2bf
+	joinOnDateBehavior: datePartOnly
+	fromColumn: weekly_overbooking.week
+	toColumn: LocalDateTable_dfe6dd8b-0e30-4b3e-a347-d8029bc30518.Date
+

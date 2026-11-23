@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "page01v0700000000000",
+  "position": {
+    "x": 1020,
+    "y": 82,
+    "z": 7000,
+    "height": 95,
+    "width": 240,
+    "tabOrder": 7000
+  },
+  "visual": {
+    "visualType": "card",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_bookings"
+                    }
+                  },
+                  "Property": "Avg Daily Rate"
+                }
+              },
+              "queryRef": "fact_bookings.Avg Daily Rate",
+              "nativeQueryRef": "Avg Daily Rate"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

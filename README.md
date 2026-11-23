@@ -6,6 +6,7 @@ This project uses **119,390 real bookings** to answer those questions:
 - **SQL** analysis of cancellations and lost revenue
 - a **cancellation-prediction model**, checked on later bookings and built without "leaky" features
 - **revenue decisions:** who to target, how many rooms to overbook safely, and where a deposit would help
+- a **4-page Power BI dashboard** (`powerbi/HotelCancellations.pbip`)
 
 ## Data
 The *Hotel Booking Demand* dataset (António, Almeida & Nunes, *Data in Brief*, 2019):
@@ -26,6 +27,7 @@ Prices are average daily rates (ADR) as recorded by the hotels. The pipeline dow
 | **Overbooking** | The weekly cancellation forecast has **12.7% error vs 16.1%** for historical averages. A 95%-confidence overbooking level would have overshot in only **2.8% of hotel-weeks** |
 | **Deposit policy** | High-risk **no-deposit** bookings cancel **65%** of the time (vs 32% for all no-deposit bookings) and lost **2.8M**. They're mostly online travel agent bookings made about **111 days** ahead, the clearest target for a deposit or reconfirmation policy |
 
+![Power BI: cancellation overview](outputs/figures/powerbi_1_overview.jpg)
 ![Cancellations by booking window](outputs/figures/cancel_by_lead_time.png)
 ![Targeting the riskiest bookings](outputs/figures/gains_curve.png)
 ![Weekly cancellations and overbooking](outputs/figures/weekly_overbooking_city.png)
@@ -78,8 +80,23 @@ Many public versions of this analysis report AUC above 0.9 by including these co
 
 The "recoverable revenue" figure (up to ~4.0M) **assumes** every overbooked room could be resold, so it's an upper bound.
 
-### Power BI
-`outputs/powerbi/` has the booking-level table with each booking's predicted risk, the SQL results, weekly overbooking and a date table. Build steps are in `powerbi/BUILD_GUIDE.md`.
+### Power BI dashboard (`powerbi/HotelCancellations.pbip`)
+It's saved as a **Power BI Project**, so the data model and report pages are plain text files versioned in Git.
+
+| Page | Shows |
+|---|---|
+| Cancellation Overview | Bookings, cancel rate, revenue lost and average daily rate. Cancellations by booking window, market segment, deposit type and customer type, with a hotel slicer |
+| Seasonality | Monthly cancellation rate and average daily rate by hotel |
+| Risk & Targeting | The gains curve (model vs. baseline) and actual cancel rate by predicted risk band |
+| Overbooking | Weekly actual vs. forecast cancellations and the safe overbooking level |
+
+**To open it:**
+1. Run `python -m src.pipeline`.
+2. Open `powerbi/HotelCancellations.pbip`.
+3. If your folder isn't the same as mine, set the `DataFolder` parameter (**Transform data → Edit parameters**) to your `outputs/powerbi` path, then click **Refresh**.
+
+![Risk and targeting](outputs/figures/powerbi_3_risk_targeting.jpg)
+![Overbooking](outputs/figures/powerbi_4_overbooking.jpg)
 
 ## Run it
 ```powershell

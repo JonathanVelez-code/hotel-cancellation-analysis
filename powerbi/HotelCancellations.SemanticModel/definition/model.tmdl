@@ -1,0 +1,25 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-US
+	valueFilterBehavior: independent
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_ProTooling = ["DevMode"]
+
+annotation PBI_QueryOrder = ["fact_bookings","dim_date","gains_curve","weekly_overbooking","DataFolder"]
+
+ref table fact_bookings
+ref table dim_date
+ref table gains_curve
+ref table weekly_overbooking
+ref table DateTableTemplate_51982bf2-dd55-4fb1-8346-2be4d14c5398
+ref table LocalDateTable_4c2ff2a5-5cc5-4bf7-8eac-ec62821ba32b
+ref table LocalDateTable_dfe6dd8b-0e30-4b3e-a347-d8029bc30518
+
+ref cultureInfo en-US
+

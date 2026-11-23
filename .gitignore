@@ -9,3 +9,7 @@ outputs/powerbi/fact_bookings.csv
 outputs/powerbi/dim_date.csv
 
 .env
+
+# Power BI project: local settings and the data cache (rebuilt on refresh)
+**/.pbi/localSettings.json
+**/.pbi/cache.abf
